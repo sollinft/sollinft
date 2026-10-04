@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-ink-950 font-display text-slate-200 antialiased;
+  }
+
+  ::selection {
+    @apply bg-sol-purple/60 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0a18;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #9945ff, #14f195);
+    border-radius: 8px;
+  }
+}
+
+@layer components {
+  /* Frosted glass card surface used across all sections. */
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl;
+  }
+
+  /* Solana gradient text. */
+  .gradient-text {
+    @apply bg-gradient-to-r from-sol-purple via-fuchsia-400 to-sol-green bg-clip-text text-transparent;
+  }
+
+  /* Thin gradient rule between sections. */
+  .section-divider {
+    @apply mx-auto h-px w-full max-w-6xl bg-gradient-to-r from-transparent via-white/15 to-transparent;
+  }
+}

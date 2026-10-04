@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A0A18"/>
+      <stop offset="1" stop-color="#05050E"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9945FF"/>
+      <stop offset="1" stop-color="#14F195"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.75" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="#9945FF" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#9945FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="60" y="180" width="108" height="108" rx="24" fill="url(#brand)"/>
+  <text x="114" y="252" text-anchor="middle" font-family="monospace" font-weight="bold" font-size="56" fill="#05050E">S</text>
+  <text x="200" y="252" font-family="Arial, sans-serif" font-weight="bold" font-size="72" fill="#ffffff">SollinFT</text>
+  <text x="200" y="310" font-family="monospace" font-size="28" fill="#8b8ba7">3,333 souls forged on Solana</text>
+  <text x="200" y="420" font-family="monospace" font-size="24" fill="#14F195">PUBLIC MINT — OCT 31, 2026 · 17:00 UTC</text>
+  <text x="200" y="465" font-family="monospace" font-size="24" fill="#8b8ba7">0.33 SOL · POWERED BY LAUNCHMYNFT</text>
+  <text x="60" y="580" font-family="monospace" font-size="20" fill="#55556e">sollinft.xyz</text>
+</svg>

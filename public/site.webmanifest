@@ -1,0 +1,16 @@
+{
+  "name": "SollinFT",
+  "short_name": "SollinFT",
+  "description": "3,333 souls forged on Solana",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#05050E",
+  "theme_color": "#05050E",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

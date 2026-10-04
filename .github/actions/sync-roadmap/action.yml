@@ -1,0 +1,7 @@
+name: Sync docs roadmap
+description: Keep docs/roadmap.md in sync with src/data/roadmap.ts
+runs:
+  using: composite
+  steps:
+    - run: echo "Roadmap phases live in src/data/roadmap.ts — update docs/roadmap.md in the same PR."
+      shell: bash
