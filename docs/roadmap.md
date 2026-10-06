@@ -5,7 +5,7 @@ mirror for the repo — keep both in sync when phases change.
 
 ## Q4 2026 — Genesis Mint · **IN PROGRESS**
 
-- Public mint via LaunchMyNFT — Oct 31, 17:00 UTC
+- Public mint via LaunchMyNFT — live since Oct 4, 2026 · 18:00 UTC
 - Instant reveal + rarity explorer
 - Holder-verified Discord with faction roles
 

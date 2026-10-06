@@ -9,14 +9,14 @@ export const SITE = {
   url: "https://sollinft.xyz",
   tagline: "3,333 souls forged on Solana",
   description:
-    "SollinFT is a generative collection of 3,333 souls living on Solana. Mint yours on October 31 — powered by LaunchMyNFT.",
+    "SollinFT is a generative collection of 3,333 souls living on Solana. Mint is live — powered by LaunchMyNFT.",
   twitter: "@sollinft",
   email: "support@sollinft.xyz",
 } as const;
 
 export const MINT_CONFIG = {
-  /** Public mint price in SOL. */
-  priceSol: 0.33,
+  /** Public mint price in SOL — matches the live LaunchMyNFT campaign. */
+  priceSol: 0.001,
   /** Total collection supply. */
   supply: 3333,
   /**
@@ -24,17 +24,17 @@ export const MINT_CONFIG = {
    * wired into the progress bar. The authoritative live counter is rendered
    * by the LaunchMyNFT widget itself (#mint-counter).
    */
-  minted: 2147,
+  minted: 0,
   /** Per-wallet mint cap enforced by the LaunchMyNFT campaign. */
   maxPerWallet: 3,
-  /** "soon" hides the widget CTA urgency state, "live" enables it. */
-  status: "soon" as "soon" | "live",
+  /** "live" enables the LIVE badge and disables the countdown. */
+  status: "live" as "soon" | "live",
   /** Human-readable mint date shown in cards and hero. */
-  dateLabel: "Oct 31, 2026 · 17:00 UTC",
+  dateLabel: "Live since Oct 4, 2026 · 18:00 UTC",
 } as const;
 
 /** ISO countdown target — keep in sync with the LaunchMyNFT campaign start. */
-export const LAUNCH_DATE_ISO = "2026-10-31T17:00:00Z";
+export const LAUNCH_DATE_ISO = "2026-10-04T18:00:34Z";
 
 /**
  * LaunchMyNFT embed configuration.

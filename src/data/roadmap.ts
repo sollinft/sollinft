@@ -6,7 +6,7 @@ export const roadmap: RoadmapPhase[] = [
     title: "Genesis Mint",
     description: "The souls come online.",
     items: [
-      "Public mint via LaunchMyNFT — Oct 31, 17:00 UTC",
+      "Public mint via LaunchMyNFT — live since Oct 4, 2026 · 18:00 UTC",
       "Instant reveal + rarity explorer",
       "Holder-verified Discord with faction roles",
     ],

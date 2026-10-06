@@ -10,7 +10,8 @@
 [![Deploy](https://github.com/sollinft/sollinft/actions/workflows/deploy.yml/badge.svg)](https://github.com/sollinft/sollinft/actions/workflows/deploy.yml)
 ![License](https://img.shields.io/badge/license-MIT-9945FF)
 ![Chain](https://img.shields.io/badge/chain-Solana-14F195)
-![Mint](https://img.shields.io/badge/mint-0.33%20SOL-FF5CA8)
+![Mint](https://img.shields.io/badge/mint-0.001%20SOL-FF5CA8)
+![Status](https://img.shields.io/badge/status-MINT%20LIVE-14F195)
 
 **[sollinft.xyz](https://sollinft.xyz)** · [X / Twitter](https://twitter.com/sollinft) · [LaunchMyNFT campaign](https://launchmynft.io)
 
@@ -69,8 +70,8 @@ export const LAUNCHMYNFT = {
   collectionId: "…", // LaunchMyNFT dashboard
 };
 
-export const MINT_CONFIG = { priceSol: 0.33, supply: 3333, /* … */ };
-export const LAUNCH_DATE_ISO = "2026-10-31T17:00:00Z";
+export const MINT_CONFIG = { priceSol: 0.001, supply: 3333, /* … */ };
+export const LAUNCH_DATE_ISO = "2026-10-04T18:00:34Z";
 ```
 
 Full integration notes and a troubleshooting matrix:

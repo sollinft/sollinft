@@ -2,7 +2,7 @@ import type { Stat } from "../types";
 
 export const heroStats: Stat[] = [
   { label: "Collection", value: "3,333" },
-  { label: "Mint price", value: "0.33 SOL" },
+  { label: "Mint price", value: "0.001 SOL" },
   { label: "Chain", value: "Solana" },
 ];
 

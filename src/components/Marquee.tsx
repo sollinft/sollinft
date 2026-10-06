@@ -2,10 +2,10 @@ import { Sparkles } from "lucide-react";
 
 const items = [
   "3,333 UNIQUE NFTS",
-  "MINTING OCT 31",
+  "MINT IS LIVE",
   "ON SOLANA",
   "POWERED BY LAUNCHMYNFT",
-  "0.33 SOL",
+  "0.001 SOL",
   "INSTANT REVEAL",
 ];
 

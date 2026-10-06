@@ -7,18 +7,22 @@ export const faqs: FaqEntry[] = [
       "SollinFT is a generative collection of 3,333 handcrafted souls living on Solana. Each Sollin is assembled from over 180 possible traits across factions, auras and backgrounds — no two are identical.",
   },
   {
-    question: "When and where is the mint?",
+    question: "Is the mint live?",
     answer:
-      "Public mint opens October 31, 2026 at 17:00 UTC, right here on sollinft.xyz. Minting is powered by LaunchMyNFT — the widget on this page connects your wallet and handles the whole flow.",
+      "Yes — public mint opened October 4, 2026 at 18:00 UTC and is live right here on sollinft.xyz, powered by LaunchMyNFT. Connect your wallet in the widget and mint.",
+  },
+  {
+    question: "I connected my wallet but can't click mint — why?",
+    answer:
+      "The campaign launches in whitelist phases. If your wallet isn't on the active whitelist, the button stays locked. Follow @sollinft on X for public-sale announcements — once whitelist is off, every wallet can mint.",
   },
   {
     question: "How much is the mint price?",
-    answer: "0.33 SOL per Sollin, plus standard Solana network fees (fractions of a cent).",
+    answer: "0.001 SOL per Sollin, plus standard Solana network fees (fractions of a cent).",
   },
   {
     question: "How many can I mint?",
-    answer:
-      "3 per wallet during public sale. There is no allowlist requirement for the public phase — but holders from the founder campaign keep their guaranteed window.",
+    answer: "3 per wallet during public sale.",
   },
   {
     question: "Which wallets are supported?",

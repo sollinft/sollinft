@@ -15,9 +15,20 @@ function Unit({ value, label }: { value: string; label: string }) {
   );
 }
 
-/** Live countdown to the public mint. */
+/** Live countdown to the public mint — switches to a LIVE chip once started. */
 export function Countdown() {
-  const { days, hours, minutes, seconds } = useCountdown(LAUNCH_DATE_ISO);
+  const { days, hours, minutes, seconds, live } = useCountdown(LAUNCH_DATE_ISO);
+
+  if (live) {
+    return (
+      <div className="flex justify-center">
+        <span className="animate-pulse-glow inline-flex items-center gap-2 rounded-full border border-sol-green/40 bg-sol-green/10 px-6 py-3 font-mono text-sm uppercase tracking-[0.25em] text-sol-green">
+          <span className="h-2 w-2 animate-pulse rounded-full bg-sol-green" />
+          Mint is live
+        </span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex justify-center gap-3" role="timer" aria-label="Countdown to public mint">
