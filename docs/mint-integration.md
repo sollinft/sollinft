@@ -42,6 +42,21 @@ lives for the page lifetime.
 `src/components/MintWidget.tsx` renders the two container divs. **Do not
 rename the ids** — they are the widget's mount points.
 
+## The RPC shim (required while LMN's bundle ships a dead host)
+
+The 0.1.3 widget **hardcodes** its RPC host
+`rahel-v0lqwp-fast-mainnet.helius-rpc.com`, which is NXDOMAIN in public DNS
+(DoH-verified 2026-10-06; control `mainnet.helius-rpc.com` resolves). With a
+dead RPC the widget cannot read campaign state, so the mint button never
+activates after wallet connect.
+
+`src/lib/rpcShim.ts` installs before the widget executes and transparently
+rewrites fetch/WebSocket URLs for that one host to
+`solana-rpc.publicnode.com` (keyless, browser-allowing JSON-RPC + WS —
+`api.mainnet-beta.solana.com` 403s browser traffic). Nothing else is
+rewritten. Remove the shim once `dig rahel-v0lqwp-fast-mainnet.helius-rpc.com`
+returns an address again.
+
 ## The currencyMint patch (required for Core campaigns)
 
 The vanilla 0.1.3 widget builds the mint instruction without the

@@ -4,6 +4,21 @@ All notable changes to SollinFT are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
 versioning follows [SemVer](https://semver.org/).
 
+## [1.0.3] — 2026-10-06
+
+### Fixed
+
+- **Root cause of the dead mint button:** LaunchMyNFT's 0.1.3 widget hardcodes
+  its RPC host `rahel-v0lqwp-fast-mainnet.helius-rpc.com`, which is NXDOMAIN
+  in public DNS — every chain read fails and the button never activates after
+  wallet connect. Added `src/lib/rpcShim.ts` (pattern: mintasol/mintasol
+  `rpc-shim.js`): fetch + WebSocket are rewritten from the dead host to
+  `solana-rpc.publicnode.com` before the widget executes. Installed ahead of
+  the widget in `useLaunchMyNFT`, idempotent, single-host scope.
+- Independent confirmation: same NXDOMAIN verified via Google DoH with a
+  resolving control host; same bug documented in two unrelated reference
+  implementations (soltrades.xyz currencyMint patch, mintasol rpc-shim).
+
 ## [1.0.2] — 2026-10-06
 
 ### Fixed

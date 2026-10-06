@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { LAUNCHMYNFT } from "../lib/constants";
 import { track } from "../lib/analytics";
+import { installRpcShim } from "../lib/rpcShim";
 
 declare global {
   interface Window {
@@ -99,6 +100,12 @@ async function injectWidget(): Promise<void> {
  */
 export function useLaunchMyNFT(): void {
   useEffect(() => {
+    // MUST run before the widget script executes: the 0.1.3 bundle hardcodes
+    // a dead RPC host (see lib/rpcShim.ts) — every fetch/WebSocket it makes
+    // gets transparently rewritten to the live endpoint.
+    installRpcShim();
+    track("rpc_shim_installed");
+
     window.ownerId = LAUNCHMYNFT.ownerId;
     window.collectionId = LAUNCHMYNFT.collectionId;
 
