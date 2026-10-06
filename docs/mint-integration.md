@@ -31,14 +31,44 @@ snippet is injected **after first render** by `src/hooks/useLaunchMyNFT.ts`:
 1. Sets `window.ownerId` / `window.collectionId` from
    `src/lib/constants.ts` → `LAUNCHMYNFT`.
 2. Appends the stylesheet (guarded by `#lmn-css` id).
-3. Appends the module script (guarded by `src` match).
+3. Fetches the widget script, applies the **currencyMint patch** (below), and
+   appends it as a blob module script.
 
 Guards make the hook idempotent — React 18 StrictMode double-invokes effects
-in dev and the script must only load once. The script is intentionally never
-removed on unmount: the widget lives for the page lifetime.
+in dev and the script must only load once (synchronous latch + `data-lmn`
+DOM check). The script is intentionally never removed on unmount: the widget
+lives for the page lifetime.
 
 `src/components/MintWidget.tsx` renders the two container divs. **Do not
 rename the ids** — they are the widget's mount points.
+
+## The currencyMint patch (required for Core campaigns)
+
+The vanilla 0.1.3 widget builds the mint instruction without the
+`currencyMint` argument the Core campaign program expects — instruction
+preflight fails and the mint button never enables after wallet connect.
+
+The patch (same approach as soltrades.xyz, hardened against minifier churn):
+
+```
+buyerPaymentTokenWallet:<var>,referredBy:null
+→ buyerPaymentTokenWallet:<var>,currencyMint:s.currency||null,referredBy:null
+```
+
+- `<var>` matches any minified identifier via regex — LMN renames it between
+  builds (`fe` → `ye` → `ue`); literal patches silently miss.
+- `s` is the bundle's own config object in that scope (verified against the
+  shipped bundle — `s.currency` is used nearby for fundReceivers).
+- For SOL-only campaigns `s.currency` is `null` and the program takes its
+  default SOL path. No addresses, amounts or authorities are modified.
+- **Fallbacks:** 0 pattern matches → warn + load official script unpatched;
+  fetch failure → load official script directly. The site never breaks
+  because of the patch.
+- Telemetry events `lmn_patch_applied` / `lmn_patch_miss` /
+  `lmn_patch_fallback` go through `src/lib/analytics.ts`.
+
+Trade-off: the script is fetched with `cache: "no-store"` on every visit
+(~7.8 MB) so LMN bundle updates are always patched against current code.
 
 ## Changing campaign
 
