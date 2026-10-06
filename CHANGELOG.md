@@ -4,6 +4,23 @@ All notable changes to SollinFT are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
 versioning follows [SemVer](https://semver.org/).
 
+## [1.0.2] — 2026-10-06
+
+### Fixed
+
+- **Mint button disabled after wallet connect** — the vanilla LaunchMyNFT
+  0.1.3 bundle omits the `currencyMint` argument Core-version campaign
+  programs expect, so instruction preflight failed. The widget is now loaded
+  through a hardened patcher (soltrades.xyz pattern): fetch official script →
+  regex-insert `currencyMint:s.currency||null` into the mint builder →
+  execute as a blob module.
+- Patch is regex-based (LMN renames minified vars between builds — literal
+  patches silently miss), verifies it matched ≥1 site, and falls back to the
+  unpatched official script on any mismatch or fetch failure.
+- Proof at deploy: widget mounts from `blob:` source, zero patch-miss
+  warnings, telemetry via `lmn_patch_applied` / `lmn_patch_miss` /
+  `lmn_patch_fallback`.
+
 ## [1.0.1] — 2026-10-06
 
 ### Fixed
