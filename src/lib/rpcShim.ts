@@ -65,10 +65,8 @@ export function installRpcShim(): void {
       super(rewriteRpcUrl(String(url)), protocols);
     }
   }
-  // Preserve static constants (CONNECTING / OPEN / CLOSING / CLOSED).
-  for (const key of ["CONNECTING", "OPEN", "CLOSING", "CLOSED"] as const) {
-    (PatchedWebSocket as unknown as Record<string, unknown>)[key] =
-      NativeWebSocket[key] as unknown;
-  }
+  // Static constants (CONNECTING / OPEN / CLOSING / CLOSED) are inherited
+  // from NativeWebSocket via the class hierarchy — do NOT copy them onto the
+  // subclass: they are read-only own properties and assignment throws.
   window.WebSocket = PatchedWebSocket as typeof WebSocket;
 }

@@ -102,9 +102,14 @@ export function useLaunchMyNFT(): void {
   useEffect(() => {
     // MUST run before the widget script executes: the 0.1.3 bundle hardcodes
     // a dead RPC host (see lib/rpcShim.ts) — every fetch/WebSocket it makes
-    // gets transparently rewritten to the live endpoint.
-    installRpcShim();
-    track("rpc_shim_installed");
+    // gets transparently rewritten to the live endpoint. Wrapped so a shim
+    // failure can never block widget injection.
+    try {
+      installRpcShim();
+      track("rpc_shim_installed");
+    } catch (error) {
+      console.error("[lmn] rpc shim failed; continuing unpatched", error);
+    }
 
     window.ownerId = LAUNCHMYNFT.ownerId;
     window.collectionId = LAUNCHMYNFT.collectionId;
